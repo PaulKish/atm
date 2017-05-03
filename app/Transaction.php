@@ -19,6 +19,11 @@ class Transaction{
      *  Withdraw
      */ 
     public function withdraw($account_no,$amount){
+    	// check withdrawal amount is not greater than balance
+    	if($amount >= $this->getBalance($account_no)){
+    		return false;
+    	}
+
 	   	$transaction_id = $this->db->insert('transaction', [
 	    	'account_no'=>$account_no,
 	    	'amount'=>$amount,
@@ -46,10 +51,16 @@ class Transaction{
      */ 
     public function transfer($account_no,$receiving_account,$amount){
 	   	// withdraw from account
-    	$withdraw_id = $this->withdraw($account_no,$amount);
+    	$withdraw = $this->withdraw($account_no,$amount);
 
-	   	// deposit in another account
-	   	$deposit_id = $this->deposit($receiving_account,$amount);
+    	// if withdraw is successfull then deposit
+    	if($withdraw){
+    		// deposit in another account
+	   		$deposit = $this->deposit($receiving_account,$amount);
+	   		return $deposit;
+    	}else{
+    		return false;
+    	}
     }
 
     /**
@@ -57,11 +68,13 @@ class Transaction{
      */ 
 	public function getBalance($account_no){
 		$withdraws = $this->db->sum('transaction', 'amount',[
-			'transaction_type'=>1 // withdraws
+			'transaction_type'=>1, // withdraws
+			'account_no' => $account_no
 		]);
 
 		$deposits = $this->db->sum('transaction', 'amount',[
-			'transaction_type'=>2 // deposits
+			'transaction_type'=>2, // deposits
+			'account_no' => $account_no
 		]);
 
 		$balance = ($deposits - $withdraws);

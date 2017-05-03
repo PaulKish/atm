@@ -8,7 +8,7 @@
 					<!-- Form Name -->
 					<legend>Login</legend>
 
-					<?= isset($status) ? $status : '' ?>
+					<?php $msg->display() ?>
 
 					<!-- Text input-->
 					<div class="form-group">

@@ -29,8 +29,10 @@ class Account{
 	/**
      * Get Accounts
      */ 
-	public function getAccounts(){
-		$accounts = $this->db->select('account', ['name','account_no']);
+	public function getAccounts($account_no){
+		$accounts = $this->db->select('account', ['name','account_no'],[
+			"account_no[!]" => $account_no
+		]);
 		return $accounts;
 	}
 

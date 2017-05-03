@@ -34,7 +34,7 @@
 						<div class="form-group">
 						  <label class="col-md-4 control-label" for="Transfer"></label>
 						  <div class="col-md-4">
-						    <button id="Transfer" name="transfer" type="submit" class="btn btn-primary">Deposit</button>
+						    <button id="Transfer" name="transfer" type="submit" class="btn btn-primary">Transfer</button>
 						    <a href="/account" class="btn btn-default">Cancel</a>
 						  </div>
 						</div>
