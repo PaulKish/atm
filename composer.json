@@ -1,0 +1,19 @@
+{
+    "name": "paul/atm",
+    "authors": [
+        {
+            "name": "Paul Ngumii",
+            "email": "paulngumii@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+          "App\\":"app/"
+        }
+    },
+    "require": {
+        "catfan/Medoo": "^1.2",
+        "bramus/router": "~1.0",
+        "dabl/view": "^1.0"
+    }
+}
