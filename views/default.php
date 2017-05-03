@@ -5,7 +5,7 @@
 				<div class="jumbotron">
 			      	<h1>Welcome!</h1>
 			        <p>Please login to access your account</p>
-			        <p><a class="btn btn-primary btn-lg" href="/login" role="button">Login &raquo;</a></p>
+			        <p><a class="btn btn-primary btn-lg" href="/login" role="button">Login</a></p>
 			    </div>
 			</div>
 		</div>
